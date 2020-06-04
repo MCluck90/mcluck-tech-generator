@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "watch": "ts-node-dev --respawn --watch src/,site/ src/main.ts",
+    "watch": "ts-node-dev --no-notify --respawn --watch src/,site/ src/main.ts",
     "server": "live-server dist"
   },
   "keywords": [],
