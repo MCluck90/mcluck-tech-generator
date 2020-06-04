@@ -4,39 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/highlight.js.css" />
+    <link rel="stylesheet" href="/blog.css" />
     <meta name="keywords" content="{{keywords}}" />
     <title>{{title}}</title>
-    <style>
-      .hidden-codeblock > pre {
-        display: none;
-      }
-      .hidden-codeblock.visible > pre {
-        display: inherit;
-      }
-    </style>
   </head>
   <body>
-    <article>
-      {{date}}
+    <article class="h-entry">
+      <h1 class="p-name">{{title}}</h1>
+      <time class="dt-published" datetime="{{date}}">{{date}}</time>
       <hr />
-      {{post}}
+      <div class="e-content">
+        {{post}}
+      </div>
+
+      <a href="{{permalink}}" class="u-url u-uid">Permalink</a>
     </article>
 
-    <script>
-      // Toggle code snippets
-      document.addEventListener('click', function (event) {
-        var target = event.target
-        if (!target.classList.contains('toggle-codeblock')) {
-          return
-        }
-
-        var container = target.closest('.hidden-codeblock')
-        if (container.classList.contains('visible')) {
-          container.classList.remove('visible')
-        } else {
-          container.classList.add('visible')
-        }
-      })
-    </script>
+    <script src="/blog.js"></script>
   </body>
 </html>

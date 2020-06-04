@@ -84,10 +84,10 @@ for (const { fileName, contents } of files) {
   const htmlFileName = fileName.replace('.md', '.html')
   const outPath = path.join(distPaths.blog, htmlFileName)
   const html = htmlTemplate
-    .replace('{{title}}', frontMatter.title)
-    .replace('{{keywords}}', frontMatter.keywords.join(','))
-    .replace('{{date}}', frontMatter.date)
-    .replace('{{post}}', postContents)
+    .replace(/{{title}}/g, frontMatter.title)
+    .replace(/{{keywords}}/g, frontMatter.keywords.join(','))
+    .replace(/{{date}}/g, frontMatter.date)
+    .replace(/{{post}}/g, postContents)
   fs.writeFileSync(outPath, html)
 }
 
