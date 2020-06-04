@@ -1,5 +1,6 @@
 import fs from 'fs'
 import mkdirp from 'mkdirp'
+import { ncp } from 'ncp'
 import path from 'path'
 import rimraf from 'rimraf'
 import MarkdownIt from 'markdown-it'
@@ -18,7 +19,7 @@ const distPaths = {
 
 if (fs.existsSync(_distPath)) {
   for (const file of fs.readdirSync(_distPath)) {
-    rimraf.sync(file)
+    rimraf.sync(path.join(_distPath, file))
   }
 }
 
@@ -82,4 +83,27 @@ for (const { fileName, contents } of files) {
     .replace('{{date}}', frontMatter.date)
     .replace('{{post}}', postContents)
   fs.writeFileSync(outPath, html)
+}
+
+// Copy everything that isn't the blog
+const nonBlogSiteFiles = fs
+  .readdirSync(_sitePath)
+  .filter(name => name !== 'blog')
+  .map(name => path.join(_sitePath, name))
+
+for (const file of nonBlogSiteFiles) {
+  if (fs.statSync(file).isDirectory()) {
+    const destination = path.join(_distPath, path.basename(file))
+    ncp(file, destination, err => {
+      if (err) {
+        console.error(err)
+      }
+    })
+  } else {
+    fs.copyFile(file, path.join(_distPath, path.basename(file)), err => {
+      if (err) {
+        console.error(err)
+      }
+    })
+  }
 }
