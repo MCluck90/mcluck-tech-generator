@@ -50,13 +50,18 @@ function assertValidFrontMatter(
   if (frontMatter.date === undefined) {
     throw new TypeError(`Must provide a date in the front-matter`)
   }
+  if (frontMatter.keywords === undefined) {
+    frontMatter.keywords = []
+  }
 }
 
 for (const { fileName, contents } of files) {
-  const md = new MarkdownIt()
+  const md = new MarkdownIt({ html: true })
   const filePath = path.join(sourcePaths.blog, fileName)
   let frontMatter: FrontMatter | null = null
-  md.use(require('markdown-it-front-matter'), function (fm: string) {
+  md.use(require('markdown-it-highlightjs')).use(require('markdown-it-front-matter'), function (
+    fm: string
+  ) {
     const potentialFrontMatter: Partial<FrontMatter> = YAML.parse(fm)
     try {
       assertValidFrontMatter(potentialFrontMatter)
@@ -80,10 +85,18 @@ for (const { fileName, contents } of files) {
   const outPath = path.join(distPaths.blog, htmlFileName)
   const html = htmlTemplate
     .replace('{{title}}', frontMatter.title)
+    .replace('{{keywords}}', frontMatter.keywords.join(','))
     .replace('{{date}}', frontMatter.date)
     .replace('{{post}}', postContents)
   fs.writeFileSync(outPath, html)
 }
+
+// Copy the highlight.js theme
+const syntaxTheme = 'dracula'
+fs.copyFileSync(
+  path.join(__dirname, '..', 'node_modules/highlight.js/styles', `${syntaxTheme}.css`),
+  path.join(_distPath, 'highlight.js.css')
+)
 
 // Copy everything that isn't the blog
 const nonBlogSiteFiles = fs
