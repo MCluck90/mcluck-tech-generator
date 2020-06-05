@@ -106,7 +106,10 @@ for (const { fileName, contents } of blogMarkdownFiles) {
   }
   frontMatter = frontMatter as FrontMatter // Goofy hack because TS can't properly infer here
 
-  const htmlFileName = fileName.replace('.md', '.html')
+  let htmlFileName = fileName.replace('.md', '.html')
+  if (!htmlFileName.endsWith('index.html')) {
+    htmlFileName = fileName.replace('.md', '/index.html')
+  }
   const outPath = path.join(distPaths.blog, htmlFileName)
   const html = htmlTemplate
     .replace(/{{title}}/g, frontMatter.title)
