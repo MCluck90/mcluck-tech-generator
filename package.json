@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
+    "build": "ts-node src/main.ts",
     "watch": "cross-env NODE_ENV=dev ts-node-dev --no-notify --respawn --watch src/,site/ src/main.ts",
     "server": "live-server --wait=200 dist"
   },
