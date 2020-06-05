@@ -1,7 +1,7 @@
 ---
 title: Reduce Redux Boilerplate with Lenses
 date: 2019-11-05
-tags: ['react', 'redux', 'lens', 'lenses', 'functional programming', 'typescript']
+keywords: ['react', 'redux', 'lens', 'lenses', 'functional programming', 'typescript']
 ---
 
 I've been speaking with [my coworkers][6] a lot lately about all of the boilerplate necessary with a Redux-based app. Usually these conversations break down to "we need yet another framework" vs. "frameworks got us here". Some people have made some very interesting projects as a way of reducing boilerplate for restricted use cases (see: [dva][1], [Kea][2]). My coworker told me about something entirely different though: lenses.
