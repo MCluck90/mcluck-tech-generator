@@ -41,6 +41,11 @@ a {
   text-decoration: none;
 }
 
+code {
+  font-family: 'Cascadia Code', 'Fira Code Retina', monospace;
+  font-size: 10pt;
+}
+
 .toggle-theme {
   background: transparent;
   border: none;

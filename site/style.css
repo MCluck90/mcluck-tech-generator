@@ -26,6 +26,11 @@ main {
   flex: 0.2;
 }
 
-.u-photo {
+.u-photo,
+.h-card a {
   display: block;
+}
+
+.h-card pre {
+  color: #444;
 }
