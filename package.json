@@ -1,7 +1,8 @@
 {
-  "name": "site-generator",
+  "private": true,
+  "name": "mcluck-tech",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generate https://mcluck.tech",
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
