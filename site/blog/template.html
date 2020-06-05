@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/highlight.js.dark.css" />
+    <link
+      rel="stylesheet"
+      href="/highlight.js.light.css"
+      class="light-theme-css"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      href="/highlight.js.dark.css"
+      class="dark-theme-css"
+    />
     <link rel="stylesheet" href="/blog/main.css" />
     <meta name="keywords" content="{{keywords}}" />
+    <script src="/blog/setup-theme.js"></script>
     <title>{{title}}</title>
   </head>
   <body>
+    <button class="toggle-theme">Toggle Theme</button>
     <article class="h-entry">
       <h1 class="p-name">{{title}}</h1>
       <time class="dt-published" datetime="{{date}}">{{date}}</time>
+      <a href="{{permalink}}" class="u-url u-uid">Permalink</a>
       <hr />
       <div class="e-content">
         {{post}}
       </div>
-
-      <a href="{{permalink}}" class="u-url u-uid">Permalink</a>
     </article>
 
     <script src="/blog/main.js"></script>

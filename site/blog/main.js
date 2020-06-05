@@ -13,10 +13,18 @@ document.addEventListener('click', function (event) {
   }
 })
 
-// Setup light theme, if necessary
-if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-  const lightCodeStyleSheet = document.createElement('link')
-  lightCodeStyleSheet.href = '/highlight.js.light.css'
-  lightCodeStyleSheet.rel = 'stylesheet'
-  document.head.appendChild(lightCodeStyleSheet)
-}
+document.querySelector('.toggle-theme').addEventListener('click', () => {
+  const html = document.querySelector('html')
+  const isDarkTheme = html.classList.contains('dark')
+  if (isDarkTheme) {
+    html.classList.replace('dark', 'light')
+    document.head.querySelector('.dark-theme-css').disabled = true
+    document.head.querySelector('.light-theme-css').disabled = false
+    localStorage.setItem('theme-preference', 'light')
+  } else {
+    html.classList.replace('light', 'dark')
+    document.head.querySelector('.dark-theme-css').disabled = false
+    document.head.querySelector('.light-theme-css').disabled = true
+    localStorage.setItem('theme-preference', 'dark')
+  }
+})

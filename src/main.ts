@@ -116,6 +116,7 @@ for (const { fileName, contents } of blogMarkdownFiles) {
     .replace(/{{keywords}}/g, frontMatter.keywords.join(','))
     .replace(/{{date}}/g, frontMatter.date)
     .replace(/{{post}}/g, postContents)
+    .replace(/{{permalink}}/g, `https://mcluck.tech/blog${htmlFileName.replace('index.html', '')}`)
   mkdirp.sync(path.dirname(outPath))
   fs.writeFileSync(outPath, html)
 }
