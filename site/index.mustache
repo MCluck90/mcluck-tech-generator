@@ -7,39 +7,29 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>Homepage</title>
+    <title>Stuff and Things</title>
     <link rel="stylesheet" href="theme.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="setup-theme.js"></script>
   </head>
   <body>
     <header>
-      <h1>Work in Progress</h1>
-      <button class="toggle-theme">
-        <img
-          src="/assets/theme-switcher.png"
-          width="32"
-          alt="Light by sugiart from the Noun Project"
-          title="Light by sugiart from the Noun Project"
-        />
-      </button>
+      <h1>Stuff and Things</h1>
+      <div class="right">
+        <button class="toggle-theme">
+          <img
+            src="/assets/theme-switcher.png"
+            width="32"
+            alt="Light by sugiart from the Noun Project"
+            title="Light by sugiart from the Noun Project"
+          />
+        </button>
+      </div>
     </header>
 
     <main>
-      <div class="blog-posts">
-        <ul>
-          {{#blogPosts}}
-          <li>
-            <a href="{{ permalink }}">
-              {{ frontMatter.title }}
-            </a>
-          </li>
-          {{/blogPosts}}
-        </ul>
-      </div>
-
       <div class="h-card">
-        <img class="u-photo" height="48" src="/assets/my-face.jpg" />
+        <img class="u-photo" width="48" height="48" src="/assets/my-face.jpg" />
         <a class="p-name u-url" href="https://mcluck.tech">Mike Cluck</a>
         <a href="https://github.com/MCluck90">Github</a>
         <a href="https://stackoverflow.com/users/371184/mike-cluck">
@@ -49,6 +39,19 @@
 // const username = "mcluck90"
 // const host = "google.com"
         </code></pre>
+      </div>
+
+      <div class="blog-posts">
+        <ul>
+          {{#blogPosts}}
+          <li>
+            <a href="{{ permalink }}">
+              <h2>{{ frontMatter.title }}</h2>
+            </a>
+            <i>{{ frontMatter.date }}</i>
+          </li>
+          {{/blogPosts}}
+        </ul>
       </div>
     </main>
 
