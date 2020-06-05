@@ -20,6 +20,10 @@ blockquote {
   padding: 0.25em 1em 0.25em 1em;
 }
 
+.p-name {
+  font-family: 'Wallpoet';
+}
+
 .article-header {
   display: flex;
   border-bottom: solid 2px #fff;
