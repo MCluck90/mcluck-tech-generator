@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Aileron';
+  src: url('/assets/aileron-light-webfont.woff') format('woff');
+}
+
+/* TODO: Find use for this one? */
+@font-face {
+  font-family: 'Ostrich';
+  src: url('/assets/ostrich-sans-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Cascadia Code';
+  src: url('/assets/CascadiaCode.otf') format('opentype');
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Aileron';
+  background-color: #191919;
+  color: hsl(163, 30%, 96%);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Dark theme */
+.dark body {
+  background-color: #191919;
+  color: hsl(163, 30%, 96%);
+}
+
+.dark a {
+  color: #81c5ff;
+}
+
+.dark blockquote {
+  background: #31312b;
+}
+
+.dark .toggle-theme {
+  filter: invert(100%);
+}
+
+/* Light theme */
+.light body {
+  color: #000;
+  background-color: hsl(163, 30%, 96%);
+}
+
+.light a {
+  color: #0071d1;
+}
+
+.light blockquote {
+  background: #fffaec;
+}

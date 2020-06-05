@@ -3,7 +3,7 @@ import path from 'path'
 export const sitePath = path.join(__dirname, '../site')
 export const sourcePaths = {
   blog: path.join(sitePath, 'blog'),
-  blogTemplate: path.join(sitePath, 'blog', 'template.html')
+  blogTemplate: path.join(sitePath, 'blog', 'template.mustache')
 }
 export const distPath = path.join(__dirname, '../dist')
 export const distPaths = {

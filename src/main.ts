@@ -1,5 +1,6 @@
 import fs from 'fs'
 import mkdirp from 'mkdirp'
+import Mustache from 'mustache'
 import { ncp } from 'ncp'
 import path from 'path'
 import rimraf from 'rimraf'
@@ -26,7 +27,6 @@ for (const p of Object.values(distPaths)) {
 // Get blog posts and sort by date
 const blogPosts = generateBlog()
 blogPosts.sort((a, b) => (a.frontMatter.date < b.frontMatter.date ? 1 : -1))
-const latestBlogPost = blogPosts[0]
 
 // Copy everything that isn't the blog
 const nonBlogSiteFiles = fs
@@ -42,20 +42,26 @@ for (const file of nonBlogSiteFiles) {
         console.error(err)
       }
     })
+  } else if (path.basename(file) === 'index.mustache') {
+    fs.readFile(file, (err, data) => {
+      if (err) {
+        throw err
+      }
+
+      const template = data.toString()
+      const result = Mustache.render(template, {
+        blogPosts
+      })
+      fs.writeFile(path.join(distPath, 'index.html'), result, err => {
+        if (err) {
+          throw err
+        }
+      })
+    })
   } else {
     fs.copyFile(file, path.join(distPath, path.basename(file)), err => {
       if (err) {
         console.error(err)
-      }
-      if (path.basename(file) === 'index.html') {
-        // Create a link to the latest blog post
-        const homepageContents = fs.readFileSync(path.join(distPath, 'index.html')).toString()
-        fs.writeFileSync(
-          path.join(distPath, 'index.html'),
-          homepageContents
-            .replace(/{{latestBlogPost\.permalink}}/g, latestBlogPost.permalink)
-            .replace(/{{latestBlogPost\.frontMatter\.title}}/g, latestBlogPost.frontMatter.title)
-        )
       }
     })
   }
