@@ -36,14 +36,51 @@ article {
   margin: 0 auto;
   margin-bottom: 2em;
 }
+@media (max-width: 970px) {
+  article {
+    padding: 0 2em 0 2em;
+  }
+}
 
 code {
   font-family: 'Cascadia Code', 'Fira Code Retina', monospace;
   font-size: 10pt;
 }
 
-.u-url {
-  float: right;
+.toggle-theme {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 1em;
+  padding: 0;
+}
+.toggle-theme:focus {
+  outline: 0;
+}
+
+.toggle-theme img {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.dark .toggle-theme {
+  filter: invert(100%);
+}
+
+.article-header {
+  display: flex;
+  border-bottom: solid 2px #fff;
+  padding-bottom: 0.5em;
+}
+
+.article-header .left,
+.article-header .right {
+  flex: 1;
+}
+.article-header .right {
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-end;
 }
 
 /* Dark theme */
