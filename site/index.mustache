@@ -9,24 +9,36 @@
     <script src="setup-theme.js"></script>
   </head>
   <body>
-    <main>
-      <h1>Homepage</h1>
+    <header>
+      <h1><i>Work in Progress</i></h1>
       <button class="toggle-theme">
         <img
           src="/assets/theme-switcher.png"
           width="32"
           alt="Light by sugiart from the Noun Project"
+          title="Light by sugiart from the Noun Project"
         />
       </button>
-      <ul>
-        {{#blogPosts}}
-        <li>
-          <a href="{{ permalink }}">
-            {{ frontMatter.title }}
-          </a>
-        </li>
-        {{/blogPosts}}
-      </ul>
+    </header>
+
+    <main>
+      <div class="blog-posts">
+        <ul>
+          {{#blogPosts}}
+          <li>
+            <a href="{{ permalink }}">
+              {{ frontMatter.title }}
+            </a>
+          </li>
+          {{/blogPosts}}
+        </ul>
+      </div>
+
+      <div class="h-card">
+        <img class="u-photo" height="48" src="/assets/my-face.jpg" />
+        <a class="p-name u-url" href="https://mcluck.tech">Mike Cluck</a>
+        <a class="u-email" href="mailto:mike@mcluck.tech">mike@mcluck.tech</a>
+      </div>
     </main>
 
     <script src="theme-switcher.js"></script>
