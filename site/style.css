@@ -34,22 +34,30 @@ main {
   margin: 0 auto;
 }
 
-.blog-posts {
+.main {
   flex: 1;
+}
+.main > h2:first-child {
+  margin-top: 0;
+}
+
+.content-section {
+  padding-top: 0.01em;
+  padding-bottom: 0.01em;
   border-radius: 8px;
 }
-.dark .blog-posts {
+.dark .content-section {
   background: rgba(255, 255, 255, 0.13);
 }
-.light .blog-posts {
+.light .content-section {
   background: rgba(255, 255, 255, 0.87);
 }
 
-.blog-posts ul {
+.content-section ul {
   list-style: none;
 }
 
-.blog-posts h2 {
+.content-section h2 {
   margin-bottom: 0;
 }
 

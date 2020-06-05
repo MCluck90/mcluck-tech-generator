@@ -4,8 +4,9 @@ import Mustache from 'mustache'
 import { ncp } from 'ncp'
 import path from 'path'
 import rimraf from 'rimraf'
-import { distPath, distPaths, sitePath } from './paths'
 import { generateBlog } from './blog'
+import { distPath, distPaths, sitePath } from './paths'
+import * as variables from './variables'
 
 if (fs.existsSync(distPath)) {
   for (const file of fs.readdirSync(distPath)) {
@@ -50,7 +51,11 @@ for (const file of nonBlogSiteFiles) {
 
       const template = data.toString()
       const result = Mustache.render(template, {
-        blogPosts
+        blogPosts,
+        toolsAndToys: [
+          { title: 'What Should I Eat?', permalink: `${variables.siteRoot}/what-should-i-eat` },
+          { title: 'Field of View Demo', permalink: `${variables.siteRoot}/vision-demo` }
+        ]
       })
       fs.writeFile(path.join(distPath, 'index.html'), result, err => {
         if (err) {

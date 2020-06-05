@@ -41,17 +41,34 @@
         </code></pre>
       </div>
 
-      <div class="blog-posts">
-        <ul>
-          {{#blogPosts}}
-          <li>
-            <a href="{{ permalink }}">
-              <h2>{{ frontMatter.title }}</h2>
-            </a>
-            <i>{{ frontMatter.date }}</i>
-          </li>
-          {{/blogPosts}}
-        </ul>
+      <div class="main">
+        <h2>Blog Posts</h2>
+        <div class="content-section">
+          <ul>
+            {{#blogPosts}}
+            <li>
+              <a href="{{ permalink }}">
+                <h2>{{ frontMatter.title }}</h2>
+              </a>
+              <i>{{ frontMatter.date }}</i>
+            </li>
+            {{/blogPosts}}
+          </ul>
+        </div>
+
+        <h2>Tools and Toys</h2>
+        <div class="content-section">
+          <ul>
+            {{#toolsAndToys}}
+            <li>
+              <a href="{{ permalink }}">
+                <h2>{{ title }}</h2>
+              </a>
+            </li>
+            <i>{{ description }}</i>
+            {{/toolsAndToys}}
+          </ul>
+        </div>
       </div>
     </main>
 
