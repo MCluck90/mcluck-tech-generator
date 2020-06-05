@@ -12,3 +12,11 @@ document.addEventListener('click', function (event) {
     container.classList.add('visible')
   }
 })
+
+// Setup light theme, if necessary
+if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+  const lightCodeStyleSheet = document.createElement('link')
+  lightCodeStyleSheet.href = '/highlight.js.light.css'
+  lightCodeStyleSheet.rel = 'stylesheet'
+  document.head.appendChild(lightCodeStyleSheet)
+}

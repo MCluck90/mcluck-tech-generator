@@ -24,7 +24,14 @@ if (fs.existsSync(_distPath)) {
 }
 
 for (const p of Object.values(distPaths)) {
-  mkdirp.sync(p)
+  // Sometimes it gets hung up when I'm running the live-server
+  // Give them a chance to resolve their differences
+  for (let i = 0; i < 10; i++) {
+    try {
+      mkdirp.sync(p)
+      break
+    } catch {}
+  }
 }
 
 function readdirSyncRecursive(root: string, parent = ''): string[] {
@@ -118,10 +125,15 @@ for (const file of blogNonMarkdownFiles) {
 }
 
 // Copy the highlight.js theme
-const syntaxTheme = 'dracula'
+const darkSyntaxTheme = 'hybrid'
+const lightSyntaxTheme = 'idea'
 fs.copyFileSync(
-  path.join(__dirname, '..', 'node_modules/highlight.js/styles', `${syntaxTheme}.css`),
-  path.join(_distPath, 'highlight.js.css')
+  path.join(__dirname, '..', 'node_modules/highlight.js/styles', `${darkSyntaxTheme}.css`),
+  path.join(_distPath, 'highlight.js.dark.css')
+)
+fs.copyFileSync(
+  path.join(__dirname, '..', 'node_modules/highlight.js/styles', `${lightSyntaxTheme}.css`),
+  path.join(_distPath, 'highlight.js.light.css')
 )
 
 // Copy everything that isn't the blog
