@@ -29,6 +29,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 article {
   padding: 0 4em 0 4em;
   font-size: 13pt;
@@ -40,6 +44,11 @@ article {
   article {
     padding: 0 2em 0 2em;
   }
+}
+
+blockquote {
+  margin: 0;
+  padding: 0.25em 1em 0.25em 1em;
 }
 
 code {
@@ -61,10 +70,6 @@ code {
 .toggle-theme img {
   width: 1.5em;
   height: 1.5em;
-}
-
-.dark .toggle-theme {
-  filter: invert(100%);
 }
 
 .article-header {
@@ -93,6 +98,14 @@ code {
   color: #81c5ff;
 }
 
+.dark blockquote {
+  background: #31312b;
+}
+
+.dark .toggle-theme {
+  filter: invert(100%);
+}
+
 /* Light theme */
 .light body {
   color: #000;
@@ -101,6 +114,10 @@ code {
 
 .light a {
   color: #0071d1;
+}
+
+.light blockquote {
+  background: #fffaec;
 }
 
 /* Allow for spoiler-style code sections */
