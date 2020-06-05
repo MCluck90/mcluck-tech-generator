@@ -25,22 +25,6 @@ code {
   font-size: 10pt;
 }
 
-.toggle-theme {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 1em;
-  padding: 0;
-}
-.toggle-theme:focus {
-  outline: 0;
-}
-
-.toggle-theme img {
-  width: 1.5em;
-  height: 1.5em;
-}
-
 .article-header {
   display: flex;
   border-bottom: solid 2px #fff;

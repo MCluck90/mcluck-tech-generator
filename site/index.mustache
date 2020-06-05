@@ -6,17 +6,29 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="theme.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="setup-theme.js"></script>
   </head>
   <body>
-    <h1>Homepage</h1>
-    <ul>
-      {{#blogPosts}}
-      <li>
-        <a href="{{ permalink }}">
-          {{ frontMatter.title }}
-        </a>
-      </li>
-      {{/blogPosts}}
-    </ul>
+    <main>
+      <h1>Homepage</h1>
+      <button class="toggle-theme">
+        <img
+          src="/assets/theme-switcher.png"
+          width="32"
+          alt="Light by sugiart from the Noun Project"
+        />
+      </button>
+      <ul>
+        {{#blogPosts}}
+        <li>
+          <a href="{{ permalink }}">
+            {{ frontMatter.title }}
+          </a>
+        </li>
+        {{/blogPosts}}
+      </ul>
+    </main>
+
+    <script src="theme-switcher.js"></script>
   </body>
 </html>

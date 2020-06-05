@@ -5,6 +5,12 @@ if (
   themePreference === 'light'
 ) {
   document.querySelector('html').classList.replace('dark', 'light')
-  document.head.querySelector('.dark-theme-css').disabled = true
-  document.head.querySelector('.light-theme-css').disabled = false
+  const darkThemeSheet = document.head.querySelector('.dark-theme')
+  const lightThemeSheet = document.head.querySelector('.light-theme')
+  if (darkThemeSheet) {
+    darkThemeSheet.disabled = true
+  }
+  if (lightThemeSheet) {
+    lightThemeSheet.disabled = false
+  }
 }

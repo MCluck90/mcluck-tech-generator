@@ -28,6 +28,22 @@ a {
   text-decoration: none;
 }
 
+.toggle-theme {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 1em;
+  padding: 0;
+}
+.toggle-theme:focus {
+  outline: 0;
+}
+
+.toggle-theme img {
+  width: 1.5em;
+  height: 1.5em;
+}
+
 /* Dark theme */
 .dark body {
   background-color: #191919;
