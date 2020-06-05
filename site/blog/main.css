@@ -2,6 +2,14 @@ img {
   max-width: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Wallpoet';
+}
+
 article {
   padding: 0 4em 0 4em;
   font-size: 13pt;

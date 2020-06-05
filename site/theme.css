@@ -14,6 +14,11 @@
   src: url('/assets/CascadiaCode.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Wallpoet';
+  src: url('/assets/Wallpoet-Regular.ttf') format('truetype');
+}
+
 body {
   width: 100%;
   height: 100%;
