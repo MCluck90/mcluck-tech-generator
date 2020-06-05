@@ -93,7 +93,8 @@ export function generateBlog(): BlogPost[] {
       keywords: frontMatter.keywords.join(','),
       date: frontMatter.date,
       post: postContents,
-      permalink: permalink
+      permalink: permalink,
+      siteRoot: variables.siteRoot
     })
     mkdirp.sync(path.dirname(outPath))
     fs.writeFileSync(outPath, html)

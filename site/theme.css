@@ -75,6 +75,10 @@ code {
   color: #81c5ff;
 }
 
+.dark header a {
+  color: hsl(163, 30%, 96%);
+}
+
 .dark blockquote {
   background: #31312b;
 }
@@ -91,6 +95,10 @@ code {
 
 .light a {
   color: #0071d1;
+}
+
+.light header a {
+  color: #000;
 }
 
 .light blockquote {
