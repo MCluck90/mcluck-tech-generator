@@ -3,12 +3,6 @@
   src: url('/assets/aileron-light-webfont.woff') format('woff');
 }
 
-/* TODO: Find use for this one? */
-@font-face {
-  font-family: 'Ostrich';
-  src: url('/assets/ostrich-sans-regular.woff') format('woff');
-}
-
 @font-face {
   font-family: 'Cascadia Code';
   src: url('/assets/CascadiaCode.otf') format('opentype');
@@ -19,11 +13,20 @@
   src: url('/assets/Wallpoet-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Prompt';
+  src: url('/assets/Prompt-Regular.ttf') format('truetype');
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
+  font-family: 'Prompt';
+}
+
+header h1 {
   font-family: 'Wallpoet';
 }
 
