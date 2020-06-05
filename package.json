@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "watch": "ts-node-dev --no-notify --respawn --watch src/,site/ src/main.ts",
+    "watch": "cross-env NODE_ENV=dev ts-node-dev --no-notify --respawn --watch src/,site/ src/main.ts",
     "server": "live-server --wait=200 dist"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "@types/ncp": "^2.0.4",
     "@types/node": "^14.0.9",
     "@types/rimraf": "^3.0.0",
+    "cross-env": "^7.0.2",
     "highlight.js": "^10.0.3",
     "live-server": "^1.2.1",
     "markdown-it": "^11.0.0",
