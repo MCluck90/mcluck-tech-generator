@@ -27,10 +27,22 @@ for (const p of Object.values(distPaths)) {
   mkdirp.sync(p)
 }
 
+function readdirSyncRecursive(root: string, parent = ''): string[] {
+  if (parent[0] === '/') {
+    parent = parent.slice(1)
+  }
+  const rootFiles = fs.readdirSync(root)
+  const subFiles = rootFiles
+    .filter(name => fs.statSync(path.join(root, name)).isDirectory())
+    .map(name => readdirSyncRecursive(path.join(root, name), `${parent}/${name}`))
+    .reduce((arr, item) => arr.concat(item), [])
+  return rootFiles.concat(subFiles).map(name => `${parent}/${name}`)
+}
+
 // Generate the blog entries
 const htmlTemplate = fs.readFileSync(sourcePaths.blogTemplate).toString()
-const files = fs
-  .readdirSync(sourcePaths.blog)
+const blogFiles = readdirSyncRecursive(sourcePaths.blog)
+const blogMarkdownFiles = blogFiles
   .filter(file => path.extname(file) === '.md')
   .map(fileName => {
     const filePath = path.join(sourcePaths.blog, fileName)
@@ -40,6 +52,12 @@ const files = fs
       contents
     }
   })
+const blogNonMarkdownFiles = blogFiles.filter(
+  file =>
+    file !== '/template.html' &&
+    path.extname(file) !== '.md' &&
+    !fs.statSync(path.join(sourcePaths.blog, file)).isDirectory()
+)
 
 function assertValidFrontMatter(
   frontMatter: Partial<FrontMatter>
@@ -55,7 +73,7 @@ function assertValidFrontMatter(
   }
 }
 
-for (const { fileName, contents } of files) {
+for (const { fileName, contents } of blogMarkdownFiles) {
   const md = new MarkdownIt({ html: true })
   const filePath = path.join(sourcePaths.blog, fileName)
   let frontMatter: FrontMatter | null = null
@@ -88,7 +106,15 @@ for (const { fileName, contents } of files) {
     .replace(/{{keywords}}/g, frontMatter.keywords.join(','))
     .replace(/{{date}}/g, frontMatter.date)
     .replace(/{{post}}/g, postContents)
+  mkdirp.sync(path.dirname(outPath))
   fs.writeFileSync(outPath, html)
+}
+
+// Copy any non-markdown files
+for (const file of blogNonMarkdownFiles) {
+  const directory = path.dirname(file)
+  mkdirp.sync(path.join(distPaths.blog, directory))
+  fs.copyFileSync(path.join(sourcePaths.blog, file), path.join(distPaths.blog, file))
 }
 
 // Copy the highlight.js theme
