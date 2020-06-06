@@ -10,6 +10,10 @@ import * as variables from './variables'
 
 if (fs.existsSync(distPath)) {
   for (const file of fs.readdirSync(distPath)) {
+    if (file === '.git') {
+      // It's convenient to store the Github pages repo in here
+      continue
+    }
     rimraf.sync(path.join(distPath, file))
   }
 }

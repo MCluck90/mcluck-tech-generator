@@ -1,9 +1,8 @@
 {
   "private": true,
-  "name": "mcluck-tech",
+  "name": "mcluck.tech",
   "version": "1.0.0",
   "description": "Generate https://mcluck.tech",
-  "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
     "build": "ts-node src/main.ts",
@@ -11,7 +10,6 @@
     "server": "live-server --wait=200 dist"
   },
   "keywords": [],
-  "author": "",
   "dependencies": {
     "@types/markdown-it": "^10.0.1",
     "@types/mkdirp": "^1.0.0",
