@@ -69,7 +69,7 @@ main {
   list-style: none;
 }
 
-.content-section h2 {
+.content-section .title {
   margin-bottom: 0;
 }
 
