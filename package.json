@@ -8,7 +8,7 @@
     "build": "ts-node src/main.ts",
     "watch": "cross-env NODE_ENV=dev ts-node-dev --no-notify --respawn --watch src/,site/ src/main.ts",
     "server": "live-server --wait=200 dist",
-    "publish": "npm run build && cd dist && git add . && git commit --interactive"
+    "publish": "npm run build && cd dist && git add . && git commit --interactive && git push"
   },
   "keywords": [],
   "dependencies": {
