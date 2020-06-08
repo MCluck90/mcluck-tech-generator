@@ -11,7 +11,7 @@ body {
   width: 100%;
 }
 
-#things > h3 {
+#things .thing {
   text-align: center;
   padding: 2em;
   margin: 1em;
@@ -19,17 +19,17 @@ body {
   border-bottom-width: 2px;
 }
 
-.dark #things > h3 {
+.dark #things .thing {
   border-bottom-color: #aaffdd;
 }
-.dark #things > h3:first-child {
+.dark #things .thing:first-child {
   border-top: solid 2px #aaffdd;
 }
 
-.light #things > h3 {
+.light #things .thing {
   border-bottom-color: #000;
 }
-.light #things > h3:first-child {
+.light #things .thing:first-child {
   border-top: solid 2px #000;
 }
 
