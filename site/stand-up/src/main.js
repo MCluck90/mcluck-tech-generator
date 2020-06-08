@@ -29,7 +29,7 @@ const main = async () => {
   shuffle(rng, data)
 
   for (const thing of data) {
-    const el = document.createElement('div')
+    const el = document.createElement('h3')
     el.innerText = thing
     thingsEl.appendChild(el)
   }
