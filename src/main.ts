@@ -1,6 +1,6 @@
 import fs from 'fs'
+import Handlebars from 'handlebars'
 import mkdirp from 'mkdirp'
-import Mustache from 'mustache'
 import { ncp } from 'ncp'
 import path from 'path'
 import rimraf from 'rimraf'
@@ -54,7 +54,7 @@ for (const file of nonBlogSiteFiles) {
       }
 
       const template = data.toString()
-      const result = Mustache.render(template, {
+      const result = Handlebars.compile(template)({
         blogPosts,
         toolsAndToys: [
           { title: 'What Should I Eat?', permalink: `${variables.siteRoot}/what-should-i-eat` },

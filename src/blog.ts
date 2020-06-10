@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
+import Handlebars from 'handlebars'
 import MarkdownIt from 'markdown-it'
-import Mustache from 'mustache'
 import mkdirp from 'mkdirp'
 import YAML from 'yaml'
 import { sourcePaths, distPaths, distPath } from './paths'
@@ -88,7 +88,7 @@ export function generateBlog(): BlogPost[] {
     }
     const permalink = `${variables.siteRoot}/blog${htmlFileName.replace('index.html', '')}`
     const outPath = path.join(distPaths.blog, htmlFileName)
-    const html = Mustache.render(htmlTemplate, {
+    const html = Handlebars.compile(htmlTemplate)({
       title: frontMatter.title,
       keywords: frontMatter.keywords.join(','),
       date: frontMatter.date,
