@@ -47,7 +47,7 @@ for (const file of nonBlogSiteFiles) {
         console.error(err)
       }
     })
-  } else if (path.basename(file) === 'index.mustache') {
+  } else if (path.basename(file) === 'index.handlebars') {
     fs.readFile(file, (err, data) => {
       if (err) {
         throw err
