@@ -1,5 +1,6 @@
 ---
 title: Reduce Redux Boilerplate with Lenses
+description: Redux comes with a lot of boilerplate. Read about one approach to reducing how much you have to write.
 date: 2019-11-05
 keywords: ['react', 'redux', 'lens', 'lenses', 'functional programming', 'typescript']
 ---

@@ -4,6 +4,7 @@ import mkdirp from 'mkdirp'
 import { ncp } from 'ncp'
 import path from 'path'
 import rimraf from 'rimraf'
+import RSS from 'rss'
 import { generateBlog } from './blog'
 import { distPath, distPaths, sitePath } from './paths'
 import * as variables from './variables'
@@ -75,3 +76,22 @@ for (const file of nonBlogSiteFiles) {
     })
   }
 }
+
+// Generate an RSS feed
+const feed = new RSS({
+  title: '[Cluckware]',
+  feed_url: `${variables.siteRoot}/feed.xml`,
+  site_url: variables.siteRoot
+})
+
+for (const post of blogPosts) {
+  feed.item({
+    title: post.frontMatter.title,
+    description: post.frontMatter.description,
+    url: post.permalink,
+    date: post.frontMatter.date
+  })
+}
+
+const xml = feed.xml({ indent: true })
+fs.writeFileSync(path.join(distPath, 'rss.xml'), xml)

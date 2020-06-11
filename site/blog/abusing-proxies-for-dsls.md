@@ -1,5 +1,6 @@
 ---
 title: Abusing Proxies for DSLs
+description: Learn how to use proxies to write a DSL
 date: 2018-04-05
 keywords: ['javascript', 'proxies', 'proxy', 'dsl', 'interpreter']
 ---

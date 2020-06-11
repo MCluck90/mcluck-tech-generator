@@ -48,6 +48,9 @@ export function generateBlog(): BlogPost[] {
     if (frontMatter.title === undefined) {
       throw new TypeError(`Must provide a title in the front-matter`)
     }
+    if (frontMatter.description === undefined) {
+      throw new TypeError(`Must provide a description in the front-matter`)
+    }
     if (frontMatter.date === undefined) {
       throw new TypeError(`Must provide a date in the front-matter`)
     }

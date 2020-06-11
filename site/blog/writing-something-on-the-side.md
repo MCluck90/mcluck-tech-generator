@@ -1,5 +1,6 @@
 ---
 title: Writing something on the side
+description: The only way to get better at programming is by doing it.
 date: 2018-04-20
 tags: ['getting started', 'side project']
 ---

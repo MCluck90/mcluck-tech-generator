@@ -1,5 +1,6 @@
 ---
 title: How I Made Windows Sexier with Opacity
+description: I love tweaking the style of my environment. Here is how I added custom opacity settings to Windows.
 date: 2018-05-25
 ---
 
