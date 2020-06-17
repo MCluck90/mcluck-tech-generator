@@ -60,6 +60,18 @@ for (const file of nonBlogSiteFiles) {
         toolsAndToys: [
           { title: 'What Should I Eat?', permalink: `${variables.siteRoot}/what-should-i-eat` },
           { title: 'Field of View Demo', permalink: `${variables.siteRoot}/vision-demo` }
+        ],
+        linksThatILike: [
+          {
+            title: 'Weird Wide Webring',
+            url: 'https://weirdwidewebring.net/',
+            description: 'The web needs a little more weird. These sites are helping.'
+          },
+          {
+            title: 'Webring',
+            url: 'https://webring.xxiivv.com/',
+            description: 'Maintained by @neauoire'
+          }
         ]
       })
       fs.writeFile(path.join(distPath, 'index.html'), result, err => {

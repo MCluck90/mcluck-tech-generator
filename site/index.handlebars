@@ -69,8 +69,21 @@
                 <h3 class="title">{{ title }}</h3>
               </a>
             </li>
-            <i>{{ description }}</i>
             {{/toolsAndToys}}
+          </ul>
+        </div>
+
+        <h2>Links That I Like</h2>
+        <div class="content-section">
+          <ul>
+            {{#linksThatILike}}
+            <li>
+              <a href="{{ url }}">
+                <h3 class="title">{{ title }}</h3>
+                <i>{{ description }}</i>
+              </a>
+            </li>
+            {{/linksThatILike}}
           </ul>
         </div>
       </div>
