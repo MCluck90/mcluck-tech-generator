@@ -57,12 +57,21 @@ input[type='range'] {
 }
 
 button {
-  color: #333;
-  background-color: #f4f4f4;
   outline: none;
+  cursor: pointer;
 }
 
-button:disabled {
+.dark button {
+  background: #191919;
+  color: #aaffdd;
+}
+
+.light button {
+  background: hsl(163, 30%, 96%);
+  color: #000;
+}
+
+/* button:disabled {
   color: #999;
 }
 
@@ -72,4 +81,4 @@ button:not(:disabled):active {
 
 button:focus {
   border-color: #666;
-}
+} */
