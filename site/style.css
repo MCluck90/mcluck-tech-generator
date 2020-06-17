@@ -6,10 +6,6 @@ body {
   padding-bottom: 1em;
 }
 
-body {
-  background-image: url('/assets/bg-noise.png');
-}
-
 header {
   display: flex;
   width: 100%;
