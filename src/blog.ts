@@ -7,18 +7,7 @@ import YAML from 'yaml'
 import { sourcePaths, distPaths, distPath } from './paths'
 import { FrontMatter, BlogPost } from './types'
 import * as variables from './variables'
-
-function readdirSyncRecursive(root: string, parent = ''): string[] {
-  if (parent[0] === '/') {
-    parent = parent.slice(1)
-  }
-  const rootFiles = fs.readdirSync(root)
-  const subFiles = rootFiles
-    .filter(name => fs.statSync(path.join(root, name)).isDirectory())
-    .map(name => readdirSyncRecursive(path.join(root, name), `${parent}/${name}`))
-    .reduce((arr, item) => arr.concat(item), [])
-  return rootFiles.concat(subFiles).map(name => `${parent}/${name}`)
-}
+import { readdirSyncRecursive } from './fs'
 
 export function generateBlog(): BlogPost[] {
   const blogPosts: BlogPost[] = []

@@ -8,6 +8,8 @@ import RSS from 'rss'
 import { generateBlog } from './blog'
 import { distPath, distPaths, sitePath } from './paths'
 import * as variables from './variables'
+import { readdirSyncRecursive } from './fs'
+import { FeedMetadata } from './types'
 
 if (fs.existsSync(distPath)) {
   for (const file of fs.readdirSync(distPath)) {
@@ -96,13 +98,41 @@ const feed = new RSS({
   site_url: variables.siteRoot
 })
 
-for (const post of blogPosts) {
-  feed.item({
+const nonBlogPostMetadata: FeedMetadata[] = readdirSyncRecursive(sitePath)
+  .filter(filePath => path.basename(filePath) === 'metadata.json')
+  .map(filePath => require(path.join(sitePath, filePath)))
+const nonBlogPostFeedItems = nonBlogPostMetadata
+  .map(metadata => {
+    return [
+      {
+        title: metadata.title,
+        description: metadata.description,
+        url: metadata.url,
+        date: metadata.date
+      }
+    ].concat(
+      metadata.updates.map(update => ({
+        title: update.title || metadata.title,
+        description: update.description || metadata.description,
+        url: update.url || metadata.url,
+        date: update.date
+      }))
+    )
+  })
+  .reduce((arr, items) => arr.concat(items), [])
+
+const feedItems = blogPosts
+  .map(post => ({
     title: post.frontMatter.title,
     description: post.frontMatter.description,
     url: post.permalink,
     date: post.frontMatter.date
-  })
+  }))
+  .concat(nonBlogPostFeedItems)
+  .sort((a, b) => (a.date < b.date ? 1 : -1))
+
+for (const item of feedItems) {
+  feed.item(item)
 }
 
 const xml = feed.xml({ indent: true })

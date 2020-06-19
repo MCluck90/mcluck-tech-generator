@@ -9,3 +9,18 @@ export interface BlogPost {
   permalink: string
   frontMatter: FrontMatter
 }
+
+export interface FeedUpdate {
+  date: string
+  title?: string
+  description?: string
+  url?: string
+}
+
+export interface FeedMetadata {
+  title: string
+  description: string
+  url: string
+  date: string
+  updates: FeedUpdate[]
+}
