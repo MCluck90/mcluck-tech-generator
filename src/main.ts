@@ -13,7 +13,8 @@ import { FeedMetadata } from './types'
 
 if (fs.existsSync(distPath)) {
   for (const file of fs.readdirSync(distPath)) {
-    if (file === '.git') {
+    // It's convenient to store the Github pages and some documentation in here
+    if (['.git', 'parsnip-ts'].includes(file)) {
       // It's convenient to store the Github pages repo in here
       continue
     }
