@@ -20,7 +20,7 @@
     "@types/rss": "0.0.28",
     "cross-env": "^7.0.2",
     "handlebars": "^4.7.6",
-    "highlight.js": "^10.0.3",
+    "highlight.js": "^10.1.2",
     "live-server": "^1.2.1",
     "markdown-it": "^11.0.0",
     "markdown-it-front-matter": "^0.2.1",
