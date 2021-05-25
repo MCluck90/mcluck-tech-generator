@@ -16,6 +16,7 @@ async function main() {
   if (fs.existsSync(distPath)) {
     const git = simpleGit(distPath)
     await git.init()
+    await git.checkout('.')
     await git.pull('origin', 'master')
 
     for (const file of fs.readdirSync(distPath)) {
