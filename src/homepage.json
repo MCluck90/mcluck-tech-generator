@@ -1,6 +1,10 @@
 {
   "toolsAndToys": [
     {
+      "title": "Boids",
+      "slug": "/boids"
+    },
+    {
       "title": "What Should I Eat?",
       "slug": "/what-should-i-eat"
     },
