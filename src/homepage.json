@@ -1,6 +1,10 @@
 {
   "toolsAndToys": [
     {
+      "title": "Data Flow Mapper",
+      "slug": "/data-flow-mapper"
+    },
+    {
       "title": "Boids",
       "slug": "/boids"
     },
