@@ -1,8 +1,8 @@
 {
   "toolsAndToys": [
     {
-      "title": "One Day HN (Hacker News client written in a few hours)",
-      "slug": "/hn"
+      "title": "1DHN (Hacker News client written in 1 day)",
+      "slug": "/1dhn"
     },
     {
       "title": "Data Flow Mapper",
